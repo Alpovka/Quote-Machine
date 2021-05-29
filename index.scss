@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,500");
+$primary-color: #fff;
+
+@mixin borderRadius {
+    border: none;
+    border-radius: 3px;
+}
+
+body {
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+#quote-box {
+    position: absolute;
+    background-color: $primary-color;
+    width: 60%;
+    height: fit-content;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    @include borderRadius();
+}
+
+#text {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+    word-spacing: 0.1rem;
+    width: 80%;
+    margin: 30px auto 0 auto;
+}
+
+#author {
+    text-align: end;
+    padding-right: 10%;
+    font-size: smaller;
+}
+
+.buttons {
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-between;
+    padding: 5px 10% 35px 10%;
+}
+
+#tweet-quote {
+    text-decoration: none;
+}
+
+#new-quote {
+    cursor: pointer;
+}
+
+.button {
+    color: $primary-color;
+    font-size: .7rem;
+    padding: 7px 10px;
+    transform: scale(1.2);
+    @include borderRadius();
+}
+
+footer {
+    position: absolute;
+    width: 60%;
+    height: fit-content;
+    margin: 0 auto;
+    top: 75%;
+    left: 50%;
+    -ms-transform: translate(-50%, 50px);
+    transform: translate(-50%, 50px);
+    text-align: center;
+    a {
+        font-size: x-small;
+        text-decoration: none;
+        color: $primary-color;
+    }
+}

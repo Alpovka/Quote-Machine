@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,500");
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+#quote-box {
+  position: absolute;
+  background-color: #fff;
+  width: 60%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 3px;
+}
+
+#text {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 500;
+  word-spacing: 0.1rem;
+  width: 80%;
+  margin: 30px auto 0 auto;
+}
+
+#author {
+  text-align: end;
+  padding-right: 10%;
+  font-size: smaller;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: row-reverse;
+          flex-flow: row-reverse;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 5px 10% 35px 10%;
+}
+
+#tweet-quote {
+  text-decoration: none;
+}
+
+#new-quote {
+  cursor: pointer;
+}
+
+.button {
+  color: #fff;
+  font-size: .7rem;
+  padding: 7px 10px;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  border: none;
+  border-radius: 3px;
+}
+
+footer {
+  position: absolute;
+  width: 60%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 0 auto;
+  top: 75%;
+  left: 50%;
+  -webkit-transform: translate(-50%, 50px);
+          transform: translate(-50%, 50px);
+  text-align: center;
+}
+
+footer a {
+  font-size: x-small;
+  text-decoration: none;
+  color: #fff;
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Random-Quote-Machine</title>
+    <script>
+         var quoteArray;
+         var twitterLink  = "https://twitter.com/intent/tweet?hashtags=quotes&";
+         const colors =  ['#16a085',
+                        '#27ae60',
+                        '#2c3e50',
+                        '#f39c12',
+                        '#e74c3c',
+                        '#9b59b6',
+                        '#FB6964',
+                        '#342224',
+                        '#472E32',
+                        '#BDBB99',
+                        '#77B1A9',
+                        '#73A857'];
+
+        const beginColor = Math.floor(Math.random() * colors.length);
+
+        $.ajax({
+             url: 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json',
+        }).done((data) => {
+            quoteArray = JSON.parse(data).quotes;
+            var randomIndex = Math.floor(Math.random() * quoteArray.length);
+            $('#text').html(`<h3 id='text'><i class='fa fa-quote-left'></i> ${quoteArray[randomIndex].quote}</h3>`);
+            $('#author').html(`<p id="author">- ${quoteArray[randomIndex].author}</p>`);
+            // Quote
+            twitterLink += quoteArray[randomIndex].quote.replace(/ /g,"%20");
+            // Author
+            twitterLink += quoteArray[randomIndex].author.replace(/ /g, "%20");
+        })
+
+        $(document).ready(function(){
+            $('body, .button, footer').css({'transition': 'all 500ms ease', 'backgroundColor': `${colors[beginColor]}`});
+            $('#quote-box').css({'transition': 'all 500ms ease', 'color': `${colors[beginColor]}`});
+            $('#tweet-quote').attr("href", twitterLink)
+            $('#new-quote').on('click', () => {
+                var randomIndex = Math.floor(Math.random() * quoteArray.length);
+                var color = Math.floor(Math.random() * colors.length);
+
+                // Main Link
+                twitterLink  = "https://twitter.com/intent/tweet?hashtags=quotes&";
+                // Quote
+                twitterLink += quoteArray[randomIndex].quote.replace(/ /g, "%20");
+                // Author
+                twitterLink += quoteArray[randomIndex].author.replace(/ /g, "%20");
+                
+                $('#text').show().fadeOut('slow',function() {
+                    $(this).html(`<h3 id='text'><i class='fa fa-quote-left'></i> ${quoteArray[randomIndex].quote}</h3>`);
+                    $('#quote-box').css({'transition': 'all 500ms ease', 'color': `${colors[color]}`});
+                    $(this).fadeIn('500');
+                });
+                $('#author').show().fadeOut('slow',function() {
+                    $(this).html(`<p id="author">- ${quoteArray[randomIndex].author}</p>`);
+                    $('body, .button, footer').css({'transition': 'all 500ms ease', 'backgroundColor': `${colors[color]}`});
+                    $(this).fadeIn('500');
+                });
+
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div id="quote-box">
+        <h3 id="text"><i class="fa fa-quote-left"></i> Every child is an artist. The problem is how to remain an artist once he grows up.</h3>
+        <p id="author">- Author</p>
+        <div class="buttons">
+            <input type="button" class="button" value="New quote" id="new-quote">
+            <a class="button" target="_top" href="#" title="Tweet this quote!" id="tweet-quote"><i class="fa fa-twitter" style="transform: scale(1.3);"></i></a>
+        </div>
+    </div>
+    <footer>
+        <a href="https://github.com/Alpovka">&copy; alpovka</a>
+    </footer>
+</body>
+</html>
